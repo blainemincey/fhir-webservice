@@ -1,0 +1,59 @@
+##
+# SpringBoot Application Properties
+# run with maven?  mvn spring-boot:run
+# BE SURE TO RENAME ME TO application.properties
+##
+spring.application.name = spring-boot-fhir-webservice
+spring.profiles = default
+server.port = 8090
+
+## Should I run in debug mode?
+debug = false
+
+## Logging Levels
+logging.level.root = INFO
+logging.level.org.mongodb.fhir=DEBUG
+logging.level.org.mongodb.driver.cluster=ERROR
+logging.level.org.mongodb.driver.connection=ERROR
+
+############################
+# MONGODB (MongoProperties)
+############################
+## The next 4 props removes the auto-configure of MongoDB if you desire to use the native driver, etc.
+spring.autoconfigure.exclude[0] = org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration
+spring.autoconfigure.exclude[1] = org.springframework.boot.autoconfigure.mongo.embedded.EmbeddedMongoAutoConfiguration
+spring.autoconfigure.exclude[2] = org.springframework.boot.autoconfigure.data.mongo.MongoDataAutoConfiguration
+spring.autoconfigure.exclude[3] = org.springframework.boot.autoconfigure.data.mongo.MongoRepositoriesAutoConfiguration
+
+// below is simply an example MongoDB Atlas URI
+spring.data.mongodb.uri = mongodb+srv://myAtlasUser:myAtlasUserPassword@myatlascluster
+spring.data.mongodb.database = fhirPatients
+spring.data.mongodb.collection = patient
+
+# basic auth credentials for Spring Security
+spring.security.user.name = fhirUser
+spring.security.user.password = fhirUserPassword
+spring.security.user.roles = fhirRole
+
+# MongoDB Client-Side Field Level Encryption fields
+mongodb.key.database = fhirEncryption
+mongodb.key.collection = __keyVault
+mongodb.key.name = fhir-data-encryption-key
+mongodb.key.kmsProvider = local
+# For MongoDB Enterprise - point to the mongocryptd binary
+mongodb.cryptdpath = /this/should/point/to/mongocryptd/from/mdb/ent/advanced/bin/dir
+mongodb.masterKeyPath = src/main/resources/master-key.txt
+
+############################
+# Management Config
+############################
+management.endpoint.env.enabled = true
+management.endpoint.info.enabled = true
+management.endpoint.health.enabled = true
+management.endpoint.logfile.enabled = true
+management.endpoint.metrics.enabled = true
+management.endpoints.enabled-by-default = true
+management.endpoint.health.show-components = always
+management.endpoints.jmx.exposure.include = *
+management.endpoints.web.exposure.include = *
+management.endpoint.health.show-details = always

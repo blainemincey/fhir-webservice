@@ -1,0 +1,42 @@
+{
+  "resourceType": "Patient",
+  "id": "123456789-1",
+  "active": true,
+  "name": [
+    {
+      "use": "official",
+      "family": "Mincey",
+      "given": [
+        "Blaine"
+      ]
+    }
+  ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "(03) 5555 6473",
+      "use": "work",
+      "rank": 1
+    }
+  ],
+  "gender": "male",
+  "birthDate": "1960-05-01",
+  "deceasedBoolean": false,
+  "address": [
+    {
+      "use": "home",
+      "type": "both",
+      "text": "Somewhere in Atlanta",
+      "line": [
+        "This is the street I live on"
+      ],
+      "city": "Atlanta",
+      "district": "North",
+      "state": "GA",
+      "postalCode": "39999",
+      "period": {
+        "start": "1974-12-25"
+      }
+    }
+  ]
+}
