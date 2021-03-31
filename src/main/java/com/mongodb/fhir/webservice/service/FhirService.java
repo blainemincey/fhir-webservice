@@ -152,4 +152,23 @@ public class FhirService {
 
         log.info(eventStream.toString());
     }
+
+    /**
+     * Method to be used to generate a Bundle Resource and return to client.
+     *
+     * @param patientId
+     * @return
+     */
+    public String processBundle(String patientId) {
+        log.info("Process Bundle for patientId: " + patientId);
+
+        String bundleResourceAsString = "";
+
+        Patient patient = this.processPatientId(patientId);
+        if(patient != null) {
+
+        }
+
+        return bundleResourceAsString;
+    }
 }

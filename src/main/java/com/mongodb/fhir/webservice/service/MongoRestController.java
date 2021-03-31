@@ -85,6 +85,22 @@ public class MongoRestController {
     }
 
     /**
+     * Get bundle by patient id and return as FHIR Bundle Resource
+     *
+     * @param patientId
+     * @return
+     */
+    @GetMapping(value = "/getBundle/{patientId}", produces = "application/json")
+    public String getBundle(@PathVariable String patientId) {
+        log.info("Get Bundle for Patient Id: " + patientId);
+
+        // log event stream
+        this.logEventStream(patientId, EventStream.BUNDLE_RESOURCE, EventStream.HTTP_GET);
+
+        return this.fhirService.processBundle(patientId);
+    }
+
+    /**
      * Log all events with unencrypted client
      *
      * @param fhirResourceString

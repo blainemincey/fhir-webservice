@@ -16,6 +16,7 @@ public class EventStream {
     public static final String PATIENT_RESOURCE = "Patient";
     public static final String CONDITION_RESOURCE = "Condition";
     public static final String PATIENT_ID_RESOURCE = "Patient_Id";
+    public static final String BUNDLE_RESOURCE = "Bundle";
 
     // Event method constants
     public static final String HTTP_GET = "HTTP_GET";
