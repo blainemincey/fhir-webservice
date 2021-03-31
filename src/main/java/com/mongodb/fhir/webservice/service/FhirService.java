@@ -7,6 +7,7 @@ import com.mongodb.fhir.webservice.model.EventStream;
 import com.mongodb.fhir.webservice.model.Patient;
 import com.mongodb.fhir.webservice.parser.ConditionParser;
 import com.mongodb.fhir.webservice.parser.PatientParser;
+import com.mongodb.fhir.webservice.utils.FhirSerializer;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -166,7 +167,9 @@ public class FhirService {
 
         Patient patient = this.processPatientId(patientId);
         if(patient != null) {
+            bundleResourceAsString = FhirSerializer.serializeBundle(patient);
 
+            log.info("Bundle result: " + bundleResourceAsString);
         }
 
         return bundleResourceAsString;
